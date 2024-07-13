@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import FilteredList from './FilteredList/FilteredList';
+import SearchBox from './SearchBox/SearchBox';
+import './App.css'
 
-function App() {
+const App = () => {
+  const [searchText, setSearchText] = useState('');
+  const items = ['Wrecked by Imagine Dragons', 'human by rangn bone man', 'Gods dont pray by Imagine Dragons', 'Abyss by Yungblud', 'The Devil and The Huntsman by Daniel Pemberton'];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <SearchBox onSearchChange={setSearchText} />
+      <FilteredList items={items} searchText={searchText} />
     </div>
   );
-}
+};
 
 export default App;
+
